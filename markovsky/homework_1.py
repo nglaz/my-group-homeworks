@@ -39,4 +39,4 @@ str_from_list = ','.join(list_from_str)
 print(str_from_list)
 print(type(str_from_list))
 
-
+# Последнее задание еще разбераю.
