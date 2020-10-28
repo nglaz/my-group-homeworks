@@ -8,8 +8,8 @@ q_name = 'Hello! My name is '+name
 q_age = '. I am '+age
 q_sex = '. i am a '+sex
 all_text = q_name+q_age+q_sex
-all_text1 = 'Hello! My name is %s. ' %name + 'I am %s .' %age + 'I am a %s' %sex
-all_text2 = 'Hello! My name is {} .' .format(name) + 'I am {} .' .format(age) + 'I am a {}' .format(sex)
+all_text1 = 'Hello! My name is %s. ' 'I am %s .' 'I am a %s' %(name,age,sex)
+all_text2 = 'Hello! My name is {} .' 'I am {} .' 'I am a {}' .format(name,age,sex)
 print(all_text)
 print(all_text1)
 print(all_text2)
