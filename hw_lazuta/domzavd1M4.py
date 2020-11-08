@@ -15,12 +15,9 @@
 zapros = input("Вітаємо на нашому ресурсі! Якщо ви зареєстровані напишить ("
                "Y) інакше (N): ")
 with open('users.txt', 'r+', encoding='utf-8') as usfile:
-<<<<<<< HEAD
     logpas = str(usfile.readlines())
-=======
     logpas = usfile.readlines()
->>>>>>> 946acbff206f2d8d3e21de3a384bffb9cdc0605a
-    print(logpas)
+    #print(logpas)
 
     if zapros == 'Y':
         login_user = input("Введіть свій логін: ")
