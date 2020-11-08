@@ -20,7 +20,11 @@ with open('users.txt', 'r+', encoding='utf-8') as usfile, \
      open('loguser.txt', 'a+', encoding='utf-8') as logfile:
 
     logpas = str(usfile.readlines())
+<<<<<<< HEAD
     now_datetime = datetime.datetime.today().strftime("%d.%m.%Y %H.%M.%S")
+=======
+    #print(logpas)
+>>>>>>> cbeaf2624c2aced9f318371d1cffeeee68970016
 
     if zapros == 'Y':
         login_user = input("Введіть свій логін: ")
