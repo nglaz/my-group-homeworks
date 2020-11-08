@@ -16,7 +16,6 @@ zapros = input("Вітаємо на нашому ресурсі! Якщо ви �
                "Y) інакше (N): ")
 with open('users.txt', 'r+', encoding='utf-8') as usfile:
     logpas = str(usfile.readlines())
-    logpas = usfile.readlines()
     #print(logpas)
 
     if zapros == 'Y':
