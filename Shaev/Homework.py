@@ -2,8 +2,10 @@ print('Введите имя, возраст и пол поочерёдно: \n'
 name = input()
 age = input()
 gender = input()
-print('Hello my name is ' '{}' ', I\'m ' '{}' ', and I\'m a ' '{}'.format(name, age, gender))
-formats = 'Hello my name is ' "%s" ', I\'m ' "%s" ', and I\'m a ' "%s" % (name, age, gender)
+print('Hello my name is ' '{}' ', I\'m ' '{}' ', and I\'m a ' '{}'.
+      format(name, age, gender))
+formats = 'Hello my name is ' "%s" ', I\'m ' "%s" ', and I\'m a ' "%s" % (
+name, age, gender)
 print(formats)
 about_me_fstring = f"Hello my name is {name}, I\'m {age}, and I\'m a {gender}"
 print(about_me_fstring)
