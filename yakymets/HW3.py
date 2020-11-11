@@ -1,8 +1,8 @@
-with open("users.txt", 'r+', encoding='utf-8') as f:
+with open('users.txt', 'r+', encoding='utf-8') as f:
     question = input(
-        'Проходили ли Вы регистрацию на нашем ресурсе? [Да], [Нет]\n').lower()
-    if question == 'Да':
-        login = input('Введите Ваш логин')
+        'Проходили ли Вы регистрацию на нашем ресурсе? [да], [нет]\n').lower()
+    if question == 'да':
+        login = input('Введите Ваш логин\n')
         x = f.read().split()
         if login in x:
             password = input('Введите Ваш пароль ')
@@ -12,10 +12,10 @@ with open("users.txt", 'r+', encoding='utf-8') as f:
             else:
                 words2 = "Ошибка"
                 print(words2)
-        elif question == 'Нет':
+    elif question == 'нет':
             question = input(
-                'Хотели бы Вы зарегистрироваться ?[Да],[Нет]\n').lower()
-            if question == 'Да':
+                'Хотели бы Вы зарегистрироваться ?[да],[нет]\n').lower()
+            if question == 'да':
                 with open('users.txt', 'r+', encoding='utf-8') as f:
                     login = input('Введите Ваш новый логин')
                     password = input('Введите Ваш новый пароль')
