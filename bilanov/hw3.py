@@ -6,11 +6,15 @@ users = f.read().split()
 
 if a == 'Yes':
     login = input('Vvedite svoi login: ')
+
     if login in users:
         print('Login naiden!')
         password = input('Vvedite svoi parol: ')
         if password in users:
-            print('Vhod uspeshen!')
+            if users.index(login) == users.index(password) - 1:
+                print('Vhod uspeshen!')
+            else:
+                print('Neverniy parol!')
         else:
             print('Neverniy parol!')
     else:
