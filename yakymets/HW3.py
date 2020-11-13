@@ -10,16 +10,18 @@ with open('users.txt', 'r+', encoding='utf-8') as f:
                 words = "Вы успешно вошли в систему"
                 print(words)
             else:
-                words2 = "Ошибка"
+                words2 = "ошибка"
                 print(words2)
+        else:
+            print('ошибка ')
     elif question == 'нет':
             question = input(
                 'Хотели бы Вы зарегистрироваться ?[да],[нет]\n').lower()
             if question == 'да':
-                with open('users.txt', 'r+', encoding='utf-8') as f:
+                with open('users.txt', 'a+', encoding='utf-8') as f:
                     login = input('Введите Ваш новый логин')
                     password = input('Введите Ваш новый пароль')
-                    f.writelines(login + ' ' + password + '\n')
+                    f.write(f'{login} {password}\n')
                     print('Поздравляю с регистрацией')
             else:
                 print('Хорошего Вам дня')
