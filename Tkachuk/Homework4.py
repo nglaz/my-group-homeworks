@@ -19,14 +19,14 @@ while True:
     if favorite_num.isdigit() is True:
         print('Thanks!')
         break
-    elif count == 7 and favorite_num.isdigit() is False:
+    elif count == 7:
         print('You are an idiot! Have a nice day')
         break
-    elif count > 5 and favorite_num.isdigit() is False:
+    elif count > 5:
         print('You have the last chance')
-    elif 3 < count <= 5 and favorite_num.isdigit() is False:
+    elif 3 < count <= 5:
         print('It is not a number too, you should to think')
-    elif count <= 3 and favorite_num.isdigit() is False:
+    elif count <= 3:
         print('It is not a number!')
 
 
