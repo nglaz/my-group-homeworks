@@ -3,8 +3,8 @@ import string
 shfr = input('Вы хотите зашифровать(Z) либо расшифровать(R)').upper()
 
 
-def cezar_shifr(lines_file):
-    shifr = []
+def caesar_shifr(lines_file):
+    shifr_after = []
     for i in range(len(lines_file[0])):
         # проверка буква ли это
         if lines_file[0][i].isalpha():
@@ -22,8 +22,8 @@ def cezar_shifr(lines_file):
                 g = abc[k]
         else:
             g = lines_file[0][i]
-        shifr.append(g)
-    shifrs = ''.join(shifr)
+        shifr_after.append(g)
+    shifrs = ''.join(shifr_after)
     return shifrs
 
 
@@ -37,10 +37,10 @@ while True:
             except FileNotFoundError:
                 print('Ошибка: Просьба ввести существующий файл для шифровки')
                 break
-            name_file_z = input('Введите имя зафрованного файла')
+            name_file_z = input('Введите имя зашифрованного файла')
             key_z = int(input('Ключ сдвига'))
             with open(name_file_z + '.txt', 'w+') as file:
-                file.write(cezar_shifr(lines_file))
+                file.write(caesar_shifr(lines_file))
         elif shfr == 'R':
             try:
                 name_file_roz = input('Введите имя файла для расшифровки')
@@ -51,10 +51,10 @@ while True:
                 break
             name_file_a = input('Введите имя файла после его расшифровки')
             key_z = int(input('Ключ сдвига'))
-            # изменение для дешифратора
+            # изменение для дешифратора, чтобы работало в обратном порядке
             key_z = - key_z
             with open(name_file_a + '.txt', 'w+') as file:
-                file.write(cezar_shifr(lines_file))
+                file.write(caesar_shifr(lines_file))
         else:
             print('Ошибка: Введите верное значение')
             break
