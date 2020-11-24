@@ -5,7 +5,6 @@ alph = {'Latin.lower': 'abcdefghijklmnopqrstuvwxyz',
         'Numbers': '1234567890',
         'Symbols': ',.?!- :;"\'()*&^%$#@+/\\<>\n',
         }
-origin = ''
 
 
 def legere(action=''):
@@ -23,7 +22,7 @@ def legere(action=''):
     return orig
 
 
-def cipher(shift=5):
+def cipher(origin, shift=5):
     dec = ''
     for sym in origin:
         for bet in alph.values():
@@ -53,21 +52,24 @@ def subcinctus(default=5):
     return shift
 
 
-while True:
-    task = input('1 - Encrypt your text. \n2 - Decrypt file. \nX - Exit \n'
-                 '__________________________________________________________________\n- ')
-    if task == '1':
-        origin = legere('encrypt')
-        res = cipher(subcinctus())
-        scribo('Encrypted.txt', res)
-        break
-    elif task == '2':
-        origin = legere('decrypt')
-        res = cipher(-subcinctus())
-        scribo('Decrypted.txt', res)
-        break
-    elif str(task).lower() == 'x' or str(task).lower() == 'exit':
-        print('Vale!')
-        break
-    else:
-        print('I don\'t understand you *_*')
+def sequentia():
+
+    while True:
+        task = input('1 - Encrypt your text. \n2 - Decrypt file. \nX - Exit \n'
+                     '__________________________________________________________________\n- ')
+        if task == '1':
+            res = cipher(legere('encrypt'), subcinctus())
+            scribo('2.txt', res)
+            break
+        elif task == '2':
+            res = cipher(legere('decrypt'), -subcinctus())
+            scribo('Decrypted.txt', res)
+            break
+        elif str(task).lower() == 'x' or str(task).lower() == 'exit':
+            print('Vale!')
+            break
+        else:
+            print('I don\'t understand you *_*')
+
+
+sequentia()
