@@ -1,89 +1,71 @@
-from string import ascii_letters
+alph = {'Latin.lower': 'abcdefghijklmnopqrstuvwxyz',
+        'Latin.upper': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        'Cyrillic.lower': 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя',
+        'Cyrillic.upper': 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ',
+        'Numbers': '1234567890',
+        'Symbols': ',.?!- :;"\'()*&^%$#@+/\\<>\n',
+        }
+origin = ''
 
-alph = ascii_letters + ' ,.!?-'
-print(alph)
 
-
-def encrypt_file(shift=5):
+def legere(action=''):
 
     while True:
         try:
-            orig_file = str(input('What file would you want to encrypt ("file.txt format")\n- '))
-            with open(orig_file) as file:
-                orig = file.read().replace('\n', ' ')
+            orig_file = str(input(F'What file would you want to {action} ("file.txt format")\n- '))
+            with open(orig_file, encoding='utf8') as file:
+                orig = file.read()
         except FileNotFoundError:
             print('There is no such file, try again.')
             continue
         else:
             break
+    return orig
 
-    print(orig)
 
-    encd_file = input('Type name of the file ("file.txt" format)       |  "Encrypted.txt" as default\n- ')
+def cipher(shift=5):
+    dec = ''
+    for sym in origin:
+        for bet in alph.values():
+            if sym in bet:
+                dec += bet[(bet.index(sym) + shift) % len(bet)]
+    return dec
 
-    if '.txt' in encd_file:
-        print('Name of file - ', encd_file)
+
+def scribo(name='', result=''):
+    filename = str(input(F'In which file do you want to write result?      | "{name}" as default\n- '))
+    if '.txt' in filename:
+        print(F'Name of file - "{filename}"')
     else:
-        encd_file = 'Encrypted.txt'
-        print('Wrong type, your file will be named "Encrypted.txt"')
+        filename = name
+        print(F'Wrong type, your file will be named "{name}"')
 
+    with open(filename, 'w', encoding='utf8') as file:
+        file.write(result)
+
+
+def subcinctus(default=5):
     try:
-        shift = int(input('Enter the key (alphabet shift)                  |  ' + str(shift) + ' is default\n- '))
+        shift = int(input(F'Enter the key (alphabet shift)                  |  {default} is default\n- '))
     except ValueError:
+        shift = default
         print('Wrong type, the key will be default')
-
-    encd = ''
-
-    with open(encd_file, 'w') as file:
-
-        for s in orig:
-            encd += alph[(alph.index(s) + shift) % len(alph)]
-        file.write(encd)
-
-
-def decrypt_file(shift=5):
-    while True:
-        try:
-            orig_file = str(input('What file would you want to decrypt ("file.txt format")\n- '))
-            with open(orig_file) as file:
-                orig = file.read().replace('\n', ' ')
-        except FileNotFoundError:
-            print('There is no such file, try again.')
-            continue
-        else:
-            break
-
-    print(orig)
-
-    decd_file = input('Type name of the file ("file.txt" format)       |  "Decrypted.txt" as default\n- ')
-
-    if '.txt' in decd_file:
-        print('Name of file - ', decd_file)
-    else:
-        decd_file = 'Decrypted.txt'
-        print('Wrong type, your file will be named "Decrypted.txt"')
-
-    try:
-        shift = int(input('Enter the key (alphabet shift)                  |  ' + str(shift) + ' is default\n- '))
-    except ValueError:
-        print('Wrong type, the key will be default')
-
-    decd = ''
-
-    with open(decd_file, 'w') as file:
-
-        for s in orig:
-            decd += alph[(alph.index(s) + len(alph) - shift) % len(alph)]
-        file.write(decd)
+    return shift
 
 
 while True:
     task = input('1 - Encrypt your text. \n2 - Decrypt file. \nX - Exit \n'
                  '__________________________________________________________________\n- ')
     if task == '1':
-        encrypt_file()
+        origin = legere('encrypt')
+        res = cipher(subcinctus())
+        scribo('Encrypted.txt', res)
+        break
     elif task == '2':
-        decrypt_file()
+        origin = legere('decrypt')
+        res = cipher(-subcinctus())
+        scribo('Decrypted.txt', res)
+        break
     elif str(task).lower() == 'x' or str(task).lower() == 'exit':
         print('Vale!')
         break
