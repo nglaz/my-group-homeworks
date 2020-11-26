@@ -1,6 +1,6 @@
 import string
 
-shfr = input('Вы хотите зашифровать(Z) либо расшифровать(R)').upper()
+shfr = input('Вы хотите зашифровать(Z) либо расшифровать(R) Ваш файл').upper()
 
 
 def file_for_work():
